@@ -2,7 +2,13 @@
   "name": "bluesky-oauth-kit",
   "version": "0.2.3",
   "description": "A complete OAuth backend implementation for Bluesky",
-  "keywords": ["Bluesky", "Bsky", "oauth", "login", "authentication"],
+  "keywords": [
+    "Bluesky",
+    "Bsky",
+    "oauth",
+    "login",
+    "authentication"
+  ],
   "main": "index.js",
   "directories": {
     "example": "examples"
@@ -21,6 +27,10 @@
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^10.0.2",
+    "@fastify/rate-limit": "^10.2.2",
+    "@fastify/static": "^8.1.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

@@ -4,6 +4,18 @@ const { getClient } = require('./oauth');
 const { authenticateToken } = require('./middleware');
 const getLoginHtml = require('./views/login');
 
+function setCookie(res, name, value, options) {
+    // Express
+    if (typeof res.cookie === 'function') {
+        return res.cookie(name, value, options);
+    }
+    // Fastify
+    if (typeof res.setCookie === 'function') {
+        return res.setCookie(name, value, options);
+    }
+    // Could add Koa support: ctx.cookies.set()
+}
+
 function setupOauthRoutes(app, sessionStore, config = {}) {
     // OAuth informational endpoints
     app.get('/oauth/client-metadata.json', (req, res) => {
@@ -49,7 +61,7 @@ function setupOauthRoutes(app, sessionStore, config = {}) {
                     ...(config.cookieSecret && { signed: true })
                 };
                 
-                res.cookie('token', token, cookieOptions);
+                setCookie(res, 'token', token, cookieOptions);
                 res.redirect(config.redirectUrl || '/');
             } else {
                 // Redirect with token in query string
