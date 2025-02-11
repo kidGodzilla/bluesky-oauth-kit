@@ -16,4 +16,4 @@ class InMemoryStore {
     }
 }
 
-module.exports = new InMemoryStore();
+module.exports = { InMemoryStore };

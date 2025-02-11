@@ -7,7 +7,9 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-keys": "node scripts/generate-keys.js",
+    "example": "node examples/express.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +20,13 @@
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0"
+  },
+  "bin": {
+    "generate-oauth-keys": "./scripts/generate-keys.js"
   }
 }
