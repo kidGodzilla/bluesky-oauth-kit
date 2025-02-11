@@ -75,7 +75,7 @@
         try {
             const data = await fetchWithAuth('/oauth/userinfo');
             document.querySelector('code#token').innerHTML = JSON.stringify(data, null, 2);
-            document.querySelector('code#profile').innerHTML = JSON.stringify(data.user, null, 2);
+            document.querySelector('code#profile').innerHTML = JSON.stringify(data, null, 2);
             document.querySelector('#logout').style.display = 'block';
         } catch (error) {
             console.error('Error fetching data:', error);

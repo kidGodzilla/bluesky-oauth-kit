@@ -89,7 +89,7 @@ function setupOauthRoutes(app, sessionStore, config = {}) {
 
     app.get('/oauth/userinfo', authenticateToken, (req, res) => {
         if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
-        res.json({ user: req.user });
+        res.json(req.user);
     });
 
     app.post('/oauth/revoke', authenticateToken, async (req, res) => {
