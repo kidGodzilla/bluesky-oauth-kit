@@ -1,5 +1,5 @@
 /* ********************************************************************** */
-/* useAuthFetch custom hook                                               */
+/* useAuthFetch custom hook (React)                                       */
 /* Example Usage                                                          */
 /* ********************************************************************** */
 // import { useEffect, useState } from 'react';

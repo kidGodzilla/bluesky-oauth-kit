@@ -1,5 +1,5 @@
 /* ********************************************************************** */
-/* useAuthFetch composable                                                */
+/* useAuthFetch composable (Vue 3)                                        */
 /* Example Usage                                                          */
 /* ********************************************************************** */
 // import { onMounted, ref } from 'vue';
