@@ -29,7 +29,10 @@ function setupOauthRoutes(app, sessionStore, config = {}) {
     app.get('/oauth/login', async (req, res, next) => {
         try {
             const state = crypto.randomBytes(16).toString('hex');
-            const url = await getClient().authorize(req.query.handle, { state });
+            const url = await getClient().authorize(req.query.handle, { 
+                state,
+                display: req.query.display || 'page' // Support 'page', 'popup', 'touch'
+            });
             res.redirect(url);
         } catch (err) {
             next(err);
@@ -38,7 +41,10 @@ function setupOauthRoutes(app, sessionStore, config = {}) {
 
     app.get('/oauth/callback', async (req, res, next) => {
         try {
-            const params = new URLSearchParams(req.url.split('?')[1]);
+            const params = req.method === 'POST' 
+                ? req.body
+                : new URLSearchParams(req.url.split('?')[1]);
+            
             const { session } = await getClient().callback(params);
 
             const payload = {
