@@ -46,11 +46,18 @@ const { initializeOAuth, authenticateToken, setupOauthRoutes } = require('bluesk
 const app = express();
 
 (async function() {
-    const { client, sessionStore } = await initializeOAuth(options);
-    app.use(authenticateToken);
+    const { client, sessionStore, stateStore } = await initializeOAuth(options);
     setupOauthRoutes(app, sessionStore);
 })();
 ```
+
+## Framework Support
+
+The library works with multiple frameworks:
+- Express (primary support)
+- Fastify (see examples/fastify.js)
+
+Other frameworks can be supported by PR.
 
 ## Environment Variables
 
@@ -109,6 +116,11 @@ await setupExpressAuth(app, {
     baseUrl: 'http://localhost:5001',
     serveLoginPage: true,  // Set to false to disable built-in login page
     loginPageTitle: 'Login with Bluesky',  // Customize login page
+    display: 'page',  // 'page', 'popup', or 'touch' for mobile
+    maxAge: 48 * 60 * 60 * 1000,  // Cookie lifetime
+    cookieDomain: '.yourdomain.com',
+    cookiePath: '/',
+    cookieSecret: 'your-secret',
     // ... other options
 });
 ```
@@ -224,3 +236,20 @@ app.use(['/login', '/oauth/*'], rateLimit({
     max: 100                    // Limit each IP to 100 requests per window
 }));
 ```
+
+## Available Scopes
+
+The Bluesky OAuth server supports these scopes:
+- `atproto` - Standard AT Protocol access
+- `transition:generic` - Generic transition scope
+- `transition:chat.bsky` - Chat transition scope (future use)
+
+## OAuth Implementation Details
+
+This library implements the AT Protocol OAuth specification via `@atproto/oauth-client-node`:
+- Secure OAuth 2.0 flow with PAR, DPoP, and PKCE
+- Session management
+- Token handling and refresh
+- Framework integrations (Express, Fastify)
+- Configurable storage backends
+
