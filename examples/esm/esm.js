@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'express.html'));
 });
 
-app.use(express.static('clients'));
+app.use(express.static('../../clients'));
 
 (async () => {
     try {
