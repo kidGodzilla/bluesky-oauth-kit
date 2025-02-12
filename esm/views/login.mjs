@@ -1,5 +1,4 @@
-import _path2 from "path";
-import _url from "url";
+import _subbu963EsmPolyfills from "@subbu963/esm-polyfills";
 import _path from "path";
 import _fs from "fs";
 var module = {
@@ -8,12 +7,11 @@ var module = {
 var exports = module.exports;
 var fs = _fs;
 var path = _path;
-var _require = _url,
-  fileURLToPath = _require.fileURLToPath;
-var _require2 = _path2,
-  dirname = _require2.dirname;
-var __filename = typeof __filename !== 'undefined' ? __filename : fileURLToPath(import.meta.url);
-var __dirname = typeof __dirname !== 'undefined' ? __dirname : dirname(__filename);
+if (!__dirname) {
+  var _require = _subbu963EsmPolyfills,
+    getDirName = _require.getDirName;
+  var __dirname = getDirName();
+}
 var template = fs.readFileSync(path.join(__dirname, 'login.html'), 'utf8');
 module.exports = function getLoginHtml() {
   var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

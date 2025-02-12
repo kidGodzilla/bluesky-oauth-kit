@@ -38,6 +38,7 @@
   "dependencies": {
     "@atproto/jwk-jose": "^0.1.4",
     "@atproto/oauth-client-node": "^0.2.10",
+    "@subbu963/esm-polyfills": "^1.0.1",
     "crypto": "^1.0.1",
     "jsonwebtoken": "^9.0.2"
   },

@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const { fileURLToPath } = require('url');
-const { dirname } = require('path');
-const __filename = typeof __filename !== 'undefined' ? __filename : fileURLToPath(import.meta.url);
-const __dirname = typeof __dirname !== 'undefined' ? __dirname : dirname(__filename);
+if (!__dirname) {
+    const { getDirName } = require('@subbu963/esm-polyfills');
+    var __dirname = getDirName();
+}
 
 const template = fs.readFileSync(path.join(__dirname, 'login.html'), 'utf8');
 
