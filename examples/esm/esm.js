@@ -1,6 +1,6 @@
 // @ts-check
 import express from 'express';
-import pkg from 'bluesky-oauth-kit';
+import pkg from '../../esm/index.mjs';
 const { setupExpressAuth, InMemoryStore } = pkg;
 import dotenv from 'dotenv';
 import path from 'path';
