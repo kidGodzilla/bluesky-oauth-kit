@@ -7,7 +7,9 @@
     "Bsky",
     "oauth",
     "login",
-    "authentication"
+    "authentication",
+    "express",
+    "fastify"
   ],
   "main": "index.js",
   "directories": {
@@ -18,7 +20,7 @@
     "generate-keys": "node scripts/generate-keys.js",
     "example": "node examples/express.js"
   },
-  "author": "",
+  "author": "James Futhey",
   "license": "ISC",
   "dependencies": {
     "@atproto/jwk-jose": "^0.1.4",
