@@ -18,8 +18,7 @@
     "oauth",
     "login",
     "authentication",
-    "express",
-    "fastify"
+    "express"
   ],
   "directories": {
     "example": "examples"
@@ -30,7 +29,6 @@
     "generate-keys": "node scripts/generate-keys.js",
     "example": "node examples/express.js",
     "example:esm": "cd examples/esm && node esm.js",
-    "example:fastify": "node examples/fastify.js",
     "build:esm": "babel . --out-dir esm --ignore node_modules,esm,examples,clients,scripts --extensions '.js' --config-file ./babel.config.esm.json --out-file-extension .mjs && cp -r views/*.html esm/views/"
   },
   "author": "James Futhey",

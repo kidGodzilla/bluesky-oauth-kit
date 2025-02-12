@@ -7,7 +7,7 @@ Accelerate the migration of third-party Bluesky apps and integrations from insec
 This package aims to adhere to OAuth 2.0 norms, while providing a simple to understand and ready-to-use Node.js backend 
 that can be used with any sort of frontend client (Javascript, Vue, React, React Native, Ionic/Capacitor, Android, Swift, Electron, PWA, etc.)
 
-Examples provided for Express and Fastify (with hopefully more to come.) Testing an PRs welcome!
+Examples provided for Express (with hopefully more to come.) Testing an PRs welcome!
 
 
 # Installation
@@ -60,7 +60,6 @@ const app = express();
 
 The library works with multiple frameworks:
 - Express (primary support)
-- Fastify (see examples/fastify.js)
 
 Other frameworks can be supported by PR.
 
@@ -256,7 +255,7 @@ This library implements the AT Protocol OAuth specification via `@atproto/oauth-
 - Secure OAuth 2.0 flow with PAR, DPoP, and PKCE
 - Session management
 - Token handling and refresh
-- Framework integrations (Express, Fastify)
+- Framework integrations (Express)
 - Configurable storage backends
 
 # Using the Bluesky API (ATProto) with this package
