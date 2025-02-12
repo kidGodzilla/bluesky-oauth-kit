@@ -1,9 +1,9 @@
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const { getClient } = require('./oauth');
-const { authenticateToken } = require('./middleware');
-const getLoginHtml = require('./views/login');
-const getErrorHtml = require('./views/error');
+const { getClient } = require('./oauth.js');
+const { authenticateToken } = require('./middleware.js');
+const getLoginHtml = require('./views/login.js');
+const getErrorHtml = require('./views/error.js');
 
 function setCookie(res, name, value, options) {
     // Express

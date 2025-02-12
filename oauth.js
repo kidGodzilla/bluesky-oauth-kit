@@ -1,6 +1,6 @@
 const { JoseKey } = require('@atproto/jwk-jose');
 const { NodeOAuthClient } = require('@atproto/oauth-client-node');
-const InMemoryStore = require('./sessionStore');
+const InMemoryStore = require('./sessionStore.js');
 
 let client = null;
 let stateStore = null;

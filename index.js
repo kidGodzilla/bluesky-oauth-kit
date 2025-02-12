@@ -1,7 +1,7 @@
-const { initializeOAuth, getClient, getSessionStore, getStateStore } = require('./oauth');
-const { InMemoryStore } = require('./sessionStore');
-const { authenticateToken } = require('./middleware');
-const { setupOauthRoutes } = require('./routes');
+const { initializeOAuth, getClient, getSessionStore, getStateStore } = require('./oauth.js');
+const { InMemoryStore } = require('./sessionStore.js');
+const { authenticateToken } = require('./middleware.js');
+const { setupOauthRoutes } = require('./routes.js');
 
 async function setupExpressAuth(app, options = {}) {
     // Add security headers
