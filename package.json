@@ -1,14 +1,17 @@
 {
   "name": "bluesky-oauth-kit",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "description": "A complete OAuth backend implementation for Bluesky",
   "type": "commonjs",
+  "main": "./index.js",
+  "module": "./esm/index.mjs",
   "exports": {
     ".": {
-      "import": "./esm/index.js",
-      "require": "./index.js"
+      "require": "./index.js",
+      "import": "./esm/index.mjs"
     }
   },
+  "types": "./types/index.d.ts",
   "keywords": [
     "Bluesky",
     "Bsky",
@@ -18,9 +21,6 @@
     "express",
     "fastify"
   ],
-  "main": "index.js",
-  "module": "./esm/index.js",
-  "types": "./types/index.d.ts",
   "directories": {
     "example": "examples"
   },
@@ -29,7 +29,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate-keys": "node scripts/generate-keys.js",
     "example": "node examples/express.js",
-    "build:esm": "babel . --out-dir esm --ignore node_modules,esm,examples,clients,scripts --extensions '.js' --config-file ./babel.config.esm.json && cp -r views/*.html esm/views/"
+    "example:esm": "cd examples/esm && node esm.js",
+    "example:fastify": "node examples/fastify.js",
+    "build:esm": "babel . --out-dir esm --ignore node_modules,esm,examples,clients,scripts --extensions '.js' --config-file ./babel.config.esm.json --out-file-extension .mjs && cp -r views/*.html esm/views/"
   },
   "author": "James Futhey",
   "license": "ISC",

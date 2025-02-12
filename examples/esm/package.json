@@ -1,0 +1,24 @@
+{
+  "name": "esm",
+  "version": "0.0.1",
+  "description": "esm test example",
+  "main": "esm.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@atproto/jwk-jose": "^0.1.4",
+    "@atproto/oauth-client-node": "^0.2.10",
+    "bluesky-oauth-kit": "^0.2.6",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
