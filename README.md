@@ -29,9 +29,7 @@ const { setupExpressAuth } = require('bluesky-oauth-kit');
 const app = express();
 
 // Basic setup
-await setupExpressAuth(app, { 
-    baseUrl: 'http://localhost:5001' 
-});
+await setupExpressAuth(app);
 
 // With additional options
 await setupExpressAuth(app, {

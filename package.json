@@ -1,6 +1,6 @@
 {
   "name": "bluesky-oauth-kit",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A complete OAuth backend implementation for Bluesky",
   "keywords": [
     "Bluesky",
@@ -15,6 +15,7 @@
   "directories": {
     "example": "examples"
   },
+  "repository": "github:kidGodzilla/bluesky-oauth-kit",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate-keys": "node scripts/generate-keys.js",
