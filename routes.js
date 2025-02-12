@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { getClient } = require('./oauth');
 const { authenticateToken } = require('./middleware');
 const getLoginHtml = require('./views/login');
+const getErrorHtml = require('./views/error');
 
 function setCookie(res, name, value, options) {
     // Express
@@ -128,6 +129,35 @@ function setupOauthRoutes(app, sessionStore, config = {}) {
             res.send(getLoginHtml(config));
         });
     }
+
+    // Error handling middleware specifically for OAuth routes (Express)
+    if (config.serveErrorPage !== false) {
+        let errorRoutes = ['/oauth/*'];
+        if (config.serveLoginPage !== false) errorRoutes.push('/login');
+        app.use(errorRoutes, (err, req, res, next) => {
+            console.error('OAuth Error:', err);
+
+            // If API request (based on Accept header or XHR)
+            if (req.xhr || req.headers.accept?.includes('application/json')) {
+                return res.status(err.status || 500).json({
+                    error: err.message || 'Internal Server Error'
+                });
+            }
+
+            // For browser requests, show error page
+            const errorMessage = process.env.NODE_ENV === 'production'
+                ? 'An error occurred during authentication.'
+                : err.message || 'Internal Server Error';
+
+            res.status(err.status || 500).send(
+                getErrorHtml({
+                    title: 'Authentication Error',
+                    error: errorMessage
+                })
+            );
+        });
+    }
+
 }
 
 module.exports = { setupOauthRoutes };

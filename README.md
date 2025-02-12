@@ -115,6 +115,7 @@ The library sets up the following endpoints:
 await setupExpressAuth(app, {
     baseUrl: 'http://localhost:5001',
     serveLoginPage: true,  // Set to false to disable built-in login page
+    serveErrorPage: true,  // Set to false to disable built-in error page
     loginPageTitle: 'Login with Bluesky',  // Customize login page
     display: 'page',  // 'page', 'popup', or 'touch' for mobile
     maxAge: 48 * 60 * 60 * 1000,  // Cookie lifetime

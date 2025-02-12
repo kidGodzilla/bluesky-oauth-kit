@@ -50,6 +50,7 @@ app.use(express.static('clients'));
         await setupExpressAuth(app, {
             baseUrl: 'http://127.0.0.1:5001',
             serveLoginPage: true,
+            serveErrorPage: true,
             redirectUrl: '/',
 
             // Optional: Use Redis for session/state storage
