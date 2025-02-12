@@ -1,4 +1,4 @@
-const { initializeOAuth } = require('./oauth');
+const { initializeOAuth, getClient, getSessionStore, getStateStore } = require('./oauth');
 const { InMemoryStore } = require('./sessionStore');
 const { authenticateToken } = require('./middleware');
 const { setupOauthRoutes } = require('./routes');
@@ -38,4 +38,7 @@ module.exports = {
     setupOauthRoutes,
     initializeOAuth,
     InMemoryStore,
+    getStateStore,
+    getSessionStore,
+    getClient,
 };

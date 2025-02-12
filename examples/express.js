@@ -68,3 +68,51 @@ app.use(express.static('clients'));
         process.exit(1);
     }
 })();
+
+/* EXAMPLE: USING ATPROTO AFTER INTEGRATING THIS PACKAGE */
+const { authenticateToken, getClient } = require('../index.js');
+const { Agent } = require('@atproto/api');
+// Small endpoint to demonstrate an API request
+app.get('/profile', authenticateToken, async (req, res) => {
+    if (!req.user || !req.user.did) return res.status(500).send('Error');
+
+    try {
+        const client = getClient();
+        const oauthSession = await client.restore(req.user.did);
+        // Instantiate the api Agent using an OAuthSession
+        const agent = new Agent(oauthSession);
+
+        const profile = await agent.getProfile({ actor: agent.did });
+        console.log('Bsky profile:', profile.data);
+
+        res.json(profile);
+    } catch(e) {
+        console.log(e);
+        res.status(403).send('Unauthorized'); // Simplified error handling for this example
+    }
+});
+
+// Endpoint to demonstrate a write request
+app.get('/post', authenticateToken, async (req, res) => {
+    if (!req.user || !req.user.did) return res.status(500).send('Error');
+
+    try {
+        const client = getClient();
+        const oauthSession = await client.restore(req.user.did);
+        // Instantiate the api Agent using an OAuthSession
+        const agent = new Agent(oauthSession);
+
+        const response = await agent.post({
+            $type: "app.bsky.feed.post",         // The AT Protocal type
+            text: req.query.text,
+            createdAt: new Date().toISOString()  // Required format
+        });
+
+        console.log('Bsky response:', response);
+
+        res.json(response);
+    } catch(e) {
+        console.log(e);
+        res.status(403).send('Unauthorized'); // Simplified error handling for this example
+    }
+});

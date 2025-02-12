@@ -59,10 +59,10 @@
         <article>
             <p>This is your example app. Requests made from this page are protected.</p>
 
-            <p>Here are your Bluesky token contents:</p>
+            <p>Here are your Bluesky token contents, from <kbd>/oauth/userinfo</kbd>:</p>
             <pre><code id="token"></code></pre>
 
-            <p>Here is your Bluesky Profile from /oauth/userinfo:</p>
+            <p>Here is your Bluesky Profile fetched via <kbd>@atproto/api</kbd>, from <kbd>/profile</kbd>:</p>
             <pre><code id="profile"></code></pre>
         </article>
     </div>
@@ -75,11 +75,21 @@
         try {
             const data = await fetchWithAuth('/oauth/userinfo');
             document.querySelector('code#token').innerHTML = JSON.stringify(data, null, 2);
-            document.querySelector('code#profile').innerHTML = JSON.stringify(data, null, 2);
             document.querySelector('#logout').style.display = 'block';
         } catch (error) {
             console.error('Error fetching data:', error);
-            document.querySelector('code').innerHTML = JSON.stringify(error, null, 2);
+            document.querySelector('code#token').innerHTML = JSON.stringify(error, null, 2);
+        }
+
+        try {
+            // Fetch profile again
+            const profile = await fetchWithAuth('/profile');
+            console.log('Profile via API:', profile);
+            document.querySelector('code#profile').innerHTML = JSON.stringify(profile.data, null, 2);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            document.querySelector('code#profile').innerHTML = JSON.stringify(error, null, 2);
         }
     })();
 </script>

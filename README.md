@@ -1,6 +1,13 @@
 # Bluesky OAuth (2.0) Kit
 
-Goal: Everything you need to implement Bluesky OAuth sign-in for a Javascript application.
+A drop-in, ready-to-use, Bluesky OAuth login solution for Node.js and Javascript (any client).
+
+Accelerate the migration of third-party Bluesky apps and integrations from insecure authentication methods (password stored in plaintext), to modern OAuth.
+
+This package aims to adhere to OAuth 2.0 norms, while providing a simple to understand and ready-to-use Node.js backend 
+that can be used with any sort of frontend client (Javascript, Vue, React, React Native, Ionic/Capacitor, Android, Swift, Electron, PWA, etc.)
+
+Examples provided for Express and Fastify (with hopefully more to come.) Testing an PRs welcome!
 
 
 # Installation
@@ -254,3 +261,9 @@ This library implements the AT Protocol OAuth specification via `@atproto/oauth-
 - Framework integrations (Express, Fastify)
 - Configurable storage backends
 
+# Using the Bluesky API (ATProto) with this package
+
+This kit provides a helper function, `getClient()`, to retrieve your authenticated client instance, 
+which can be passed to `@atproto/api` to make authenticated API requests. 
+
+See `examples/express.js`.
