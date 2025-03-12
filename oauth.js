@@ -39,9 +39,6 @@ function getConfig(config = {}) {
     if (config.tosUri) metadata.tos_uri = config.tosUri;
     if (config.policyUri) metadata.policy_uri = config.policyUri;
 
-    // Store the redirectUrl in the config for use in routes
-    config.redirectUrl = config.redirectUrl || process.env.OAUTH_REDIRECT_URL || '/';
-
     return metadata;
 }
 

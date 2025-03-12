@@ -22,12 +22,15 @@ async function setupExpressAuth(app, options = {}) {
         });
     }
 
+    // Store the redirectUrl in the config for use in routes
+    options.redirectUrl = options.redirectUrl || process.env.OAUTH_REDIRECT_URL || '/';
+
     const { client, sessionStore, stateStore } = await initializeOAuth(options, {
         stateStore: options.stateStore,
         sessionStore: options.sessionStore
     });
 
-    setupOauthRoutes(app, sessionStore);
+    setupOauthRoutes(app, sessionStore, options);
 
     return { client, sessionStore, stateStore };
 }

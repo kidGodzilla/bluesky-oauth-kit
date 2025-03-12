@@ -53,23 +53,26 @@ function _setupExpressAuth() {
               next();
             });
           }
-          _context.next = 5;
+
+          // Store the redirectUrl in the config for use in routes
+          options.redirectUrl = options.redirectUrl || process.env.OAUTH_REDIRECT_URL || '/';
+          _context.next = 6;
           return initializeOAuth(options, {
             stateStore: options.stateStore,
             sessionStore: options.sessionStore
           });
-        case 5:
+        case 6:
           _yield$initializeOAut = _context.sent;
           client = _yield$initializeOAut.client;
           sessionStore = _yield$initializeOAut.sessionStore;
           stateStore = _yield$initializeOAut.stateStore;
-          setupOauthRoutes(app, sessionStore);
+          setupOauthRoutes(app, sessionStore, options);
           return _context.abrupt("return", {
             client: client,
             sessionStore: sessionStore,
             stateStore: stateStore
           });
-        case 11:
+        case 12:
         case "end":
           return _context.stop();
       }
