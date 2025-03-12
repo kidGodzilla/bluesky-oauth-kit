@@ -8,9 +8,14 @@
   "types": "./types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./esm/index.d.mts",
-      "require": "./index.js",
-      "import": "./esm/index.mjs"
+      "import": {
+        "types": "./esm/index.d.mts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./types/index.d.ts",
+        "default": "./index.js"
+      }
     }
   },
   "keywords": [
