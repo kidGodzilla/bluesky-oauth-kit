@@ -1,11 +1,11 @@
 {
   "name": "bluesky-oauth-kit",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "A complete OAuth backend implementation for Bluesky",
   "type": "commonjs",
   "main": "./index.js",
   "module": "./esm/index.mjs",
-  "types": "./esm/index.d.ts",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
       "types": "./esm/index.d.mts",
