@@ -1,8 +1,8 @@
-import { Express } from 'express';
-import { FastifyInstance } from 'fastify';
-import { Request, Response, NextFunction } from 'express';
-import { FastifyRequest, FastifyReply } from 'fastify';
-import { NodeOAuthClient } from '@atproto/oauth-client-node';
+import type { Express } from 'express';
+import type { FastifyInstance } from 'fastify';
+import type { Request, Response, NextFunction } from 'express';
+import type { FastifyRequest, FastifyReply } from 'fastify';
+import type { NodeOAuthClient } from '@atproto/oauth-client-node';
 
 export interface OAuthOptions {
     baseUrl?: string;
@@ -46,8 +46,8 @@ export function setupExpressAuth(app: Express, options?: OAuthOptions): Promise<
 }>;
 
 export function authenticateToken(
-    req: Request | FastifyRequest, 
-    res: Response | FastifyReply, 
+    req: Request | FastifyRequest,
+    res: Response | FastifyReply,
     next: NextFunction
 ): void;
 
@@ -64,7 +64,7 @@ export function initializeOAuth(config?: OAuthOptions, stores?: {
 
 export function getClient(): NodeOAuthClient;
 export function getStateStore(): Store;
-export function getSessionStore(): Store; 
+export function getSessionStore(): Store;
 
 export interface User {
     sub: string;
