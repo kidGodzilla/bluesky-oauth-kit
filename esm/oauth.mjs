@@ -23,7 +23,7 @@ function getConfig() {
   var baseUrl = config.baseUrl || process.env.OAUTH_BASE_URL;
 
   // Handle localhost client_id special case
-  var client_id = baseUrl.includes('127.0.0.1') ? "http://localhost?redirect_uri=".concat(encodeURIComponent("".concat(baseUrl, "/oauth/callback")), "&scope=").concat(encodeURIComponent('atproto transition:generic')) : "".concat(baseUrl, "/oauth/client-metadata.json");
+  var client_id = baseUrl.includes('127.0.0.1') ? "http://localhost?redirect_uri=".concat(encodeURIComponent("".concat(baseUrl, "/oauth/callback")), "&scope=").concat(encodeURIComponent(config.scope || 'atproto transition:generic')) : "".concat(baseUrl, "/oauth/client-metadata.json");
   var metadata = {
     // Standard OAuth 2.0 client configuration
     client_id: config.clientId || client_id,

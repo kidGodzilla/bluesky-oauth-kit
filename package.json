@@ -1,6 +1,6 @@
 {
   "name": "bluesky-oauth-kit",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "A complete OAuth backend implementation for Bluesky",
   "type": "commonjs",
   "main": "./index.js",
