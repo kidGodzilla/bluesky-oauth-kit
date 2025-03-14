@@ -17,7 +17,7 @@ async function setupExpressAuth(app, options = {}) {
     // Force HTTPS in production
     if (options.forceHTTPS || process.env.NODE_ENV === 'production' && options.forceHTTPS !== false) {
         app.use((req, res, next) => {
-            if (req.header('x-forwarded-proto') !== 'https') {
+            if (req.header('x-forwarded-proto') && req.header('x-forwarded-proto') !== 'https') {
                 return res.redirect(`https://${req.header('host')}${req.url}`);
             }
             next();
