@@ -126,6 +126,8 @@ await setupExpressAuth(app, {
     cookieDomain: '.yourdomain.com',
     cookiePath: '/',
     cookieSecret: 'your-secret',
+    addHeaders: true,
+    forceHTTPS: true,
     // ... other options
 });
 ```

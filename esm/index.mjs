@@ -37,15 +37,17 @@ function _setupExpressAuth() {
         case 0:
           options = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
           // Add security headers
-          app.use(function (req, res, next) {
-            res.setHeader('X-Content-Type-Options', 'nosniff');
-            res.setHeader('X-Frame-Options', 'DENY');
-            res.setHeader('X-XSS-Protection', '1; mode=block');
-            next();
-          });
+          if (options.addHeaders !== false) {
+            app.use(function (req, res, next) {
+              res.setHeader('X-Content-Type-Options', 'nosniff');
+              res.setHeader('X-Frame-Options', 'DENY');
+              res.setHeader('X-XSS-Protection', '1; mode=block');
+              next();
+            });
+          }
 
           // Force HTTPS in production
-          if (process.env.NODE_ENV === 'production') {
+          if (options.forceHTTPS || process.env.NODE_ENV === 'production' && options.forceHTTPS !== false) {
             app.use(function (req, res, next) {
               if (req.header('x-forwarded-proto') !== 'https') {
                 return res.redirect("https://".concat(req.header('host')).concat(req.url));

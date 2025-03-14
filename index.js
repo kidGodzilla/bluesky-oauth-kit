@@ -5,15 +5,17 @@ const { setupOauthRoutes } = require('./routes.js');
 
 async function setupExpressAuth(app, options = {}) {
     // Add security headers
-    app.use((req, res, next) => {
-        res.setHeader('X-Content-Type-Options', 'nosniff');
-        res.setHeader('X-Frame-Options', 'DENY');
-        res.setHeader('X-XSS-Protection', '1; mode=block');
-        next();
-    });
+    if (options.addHeaders !== false) {
+        app.use((req, res, next) => {
+            res.setHeader('X-Content-Type-Options', 'nosniff');
+            res.setHeader('X-Frame-Options', 'DENY');
+            res.setHeader('X-XSS-Protection', '1; mode=block');
+            next();
+        });
+    }
 
     // Force HTTPS in production
-    if (process.env.NODE_ENV === 'production') {
+    if (options.forceHTTPS || process.env.NODE_ENV === 'production' && options.forceHTTPS !== false) {
         app.use((req, res, next) => {
             if (req.header('x-forwarded-proto') !== 'https') {
                 return res.redirect(`https://${req.header('host')}${req.url}`);

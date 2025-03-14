@@ -23,6 +23,8 @@ export interface OAuthOptions {
     cookieSecret?: string;
     stateStore?: Store;
     sessionStore?: Store;
+    addHeaders?: boolean;
+    forceHTTPS?: boolean;
 }
 
 export interface Store {
