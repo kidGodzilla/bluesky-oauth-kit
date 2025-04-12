@@ -49,7 +49,7 @@ function _setupExpressAuth() {
           // Force HTTPS in production
           if (options.forceHTTPS || process.env.NODE_ENV === 'production' && options.forceHTTPS !== false) {
             app.use(function (req, res, next) {
-              if (req.header('x-forwarded-proto') !== 'https') {
+              if (!req.secure && req.header('x-forwarded-proto') && req.header('x-forwarded-proto') !== 'https') {
                 return res.redirect("https://".concat(req.header('host')).concat(req.url));
               }
               next();

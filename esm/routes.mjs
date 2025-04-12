@@ -232,7 +232,7 @@ function setupOauthRoutes(app, sessionStore) {
 
   // Error handling middleware specifically for OAuth routes (Express)
   if (config.serveErrorPage !== false) {
-    var errorRoutes = ['/oauth/*'];
+    var errorRoutes = ['/oauth/*name'];
     if (config.serveLoginPage !== false) errorRoutes.push('/login');
     app.use(errorRoutes, function (err, req, res, next) {
       var _req$headers$accept;
