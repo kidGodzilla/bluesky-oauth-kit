@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -8,6 +8,7 @@ const path = require('path');
 const { setupExpressAuth, InMemoryStore } = require('../index.js');
 
 const app = express();
+app.set('trust proxy', 2);
 
 app.use(cookieParser());
 app.use(express.json());
