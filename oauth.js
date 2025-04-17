@@ -11,7 +11,8 @@ function getConfig(config = {}) {
     
     // Handle localhost client_id special case
     const client_id = baseUrl.includes('127.0.0.1') 
-        ? `http://localhost?redirect_uri=${encodeURIComponent(`${baseUrl}/oauth/callback`)}&scope=${encodeURIComponent(config.scope || 'atproto transition:generic')}`
+        ? `http://localhost?redirect_uri=${encodeURIComponent(`${baseUrl}/oauth/callback`)}`+
+          `&scope=${encodeURIComponent(config.scope || 'atproto transition:generic')}`
         : `${baseUrl}/oauth/client-metadata.json`;
 
     const metadata = {
