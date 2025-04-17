@@ -46,21 +46,7 @@
     "@atproto/oauth-client-node": "^0.2.10",
     "@subbu963/esm-polyfills": "^1.0.1",
     "crypto": "^1.0.1",
-    "jsonwebtoken": "^9.0.2"
-  },
-  "peerDependencies": {
-    "express": ">=4.0.0",
-    "fastify": ">=4.0.0"
-  },
-  "peerDependenciesMeta": {
-    "express": {
-      "optional": true
-    },
-    "fastify": {
-      "optional": true
-    }
-  },
-  "devDependencies": {
+    "jsonwebtoken": "^9.0.2",
     "@atproto/api": "^0.13.35",
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.3",
@@ -76,6 +62,20 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express-rate-limit": "^7.5.0"
+  },
+  "peerDependencies": {
+    "express": ">=4.0.0",
+    "fastify": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    },
+    "fastify": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
   },
   "bin": {
     "generate-oauth-keys": "./scripts/generate-keys.js"
