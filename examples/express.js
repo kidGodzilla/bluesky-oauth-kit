@@ -21,7 +21,7 @@ app.use(cors({
 
 // Rate limiting
 const rateLimit = require('express-rate-limit');
-app.use(['/login', '/oauth/*'], rateLimit({
+app.use(['/login', '/oauth/*name'], rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100,
 }));
