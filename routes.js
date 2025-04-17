@@ -34,7 +34,6 @@ function setupOauthRoutes(app, sessionStore, config = {}) {
                 state,
                 display: req.query.display || 'page' // Support 'page', 'popup', 'touch'
             });
-            console.log('url', url);
             res.redirect(url);
         } catch (err) {
             next(err);
