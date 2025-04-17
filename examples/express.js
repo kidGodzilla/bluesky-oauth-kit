@@ -53,6 +53,7 @@ app.use(express.static('clients'));
             serveLoginPage: true,
             serveErrorPage: true,
             redirectUris: ['http://127.0.0.1/oauth/callback'],
+            forceHTTPS: false,
             redirectUrl: '/',
 
             // Optional: Use Redis for session/state storage
