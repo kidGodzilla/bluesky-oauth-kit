@@ -52,7 +52,6 @@ app.use(express.static('clients'));
             baseUrl: 'http://127.0.0.1:5001',
             serveLoginPage: true,
             serveErrorPage: true,
-            redirectUris: ['http://127.0.0.1/oauth/callback'],
             forceHTTPS: false,
             redirectUrl: '/',
 
