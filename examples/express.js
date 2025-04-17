@@ -8,6 +8,7 @@ const path = require('path');
 const { setupExpressAuth, InMemoryStore } = require('../index.js');
 
 const app = express();
+app.set('trust proxy', 2);
 
 app.use(cookieParser());
 app.use(express.json());
@@ -20,7 +21,7 @@ app.use(cors({
 
 // Rate limiting
 const rateLimit = require('express-rate-limit');
-app.use(['/login', '/oauth/*'], rateLimit({
+app.use(['/login', '/oauth/*name'], rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100,
 }));
@@ -51,6 +52,7 @@ app.use(express.static('clients'));
             baseUrl: 'http://127.0.0.1:5001',
             serveLoginPage: true,
             serveErrorPage: true,
+            forceHTTPS: false,
             redirectUrl: '/',
 
             // Optional: Use Redis for session/state storage
@@ -61,7 +63,7 @@ app.use(express.static('clients'));
             stateStore,
             sessionStore,
         });
-        
+
         app.listen(process.env.PORT || 5001, () => console.log(`Server running on port ${ process.env.PORT || 5001 }`));
     } catch (error) {
         console.error('Failed to setup auth:', error);
