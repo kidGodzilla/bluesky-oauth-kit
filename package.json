@@ -36,7 +36,6 @@
     "example": "node examples/express.js",
     "example:esm": "cd examples/esm && node esm.js",
     "build:esm": "babel . --out-dir esm --ignore node_modules,esm,examples,clients,scripts --extensions '.js' --config-file ./babel.config.esm.json --out-file-extension .mjs && cp -r views/*.html esm/views/",
-    "build": "npm i -D",
     "start": "node examples/express.js"
   },
   "author": "James Futhey",
