@@ -1,6 +1,6 @@
 {
   "name": "bluesky-oauth-kit",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "description": "A complete OAuth backend implementation for Bluesky",
   "type": "commonjs",
   "main": "./index.js",
@@ -40,8 +40,8 @@
   "author": "James Futhey",
   "license": "ISC",
   "dependencies": {
-    "@atproto/jwk-jose": "^0.1.4",
-    "@atproto/oauth-client-node": "^0.2.10",
+    "@atproto/jwk-jose": "0.1.6",
+    "@atproto/oauth-client-node": "0.2.x",
     "@subbu963/esm-polyfills": "^1.0.1",
     "crypto": "^1.0.1",
     "jsonwebtoken": "^9.0.2"
